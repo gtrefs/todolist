@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
       input-button-unit works!
       The title is: {{ title }}
     </p>
+    <input [value]="title">
+    <button>Save</button>
   `,
   styleUrls: ['./input-button-unit.component.css']
 })
