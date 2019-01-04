@@ -7,8 +7,11 @@ import { Component, OnInit } from '@angular/core';
       input-button-unit works!
       The title is: {{ title }}
     </p>
-    <input [value]="title">
-    <button>Save</button>
+    <input [value]="title"
+           (keyup.enter)="changeTitle($event.target.value)">
+    <button (click)="changeTitle('Button clicked')">
+      Save
+    </button>
   `,
   styleUrls: ['./input-button-unit.component.css']
 })
@@ -19,6 +22,10 @@ export class InputButtonUnitComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  changeTitle(newTitle: string) {
+    this.title = newTitle;
   }
 
 }
