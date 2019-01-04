@@ -7,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
       input-button-unit works!
       The title is: {{ title }}
     </p>
-    <input [value]="title"
+    <input #inputElmentRef
+           [value]="title"
            (keyup.enter)="changeTitle($event.target.value)">
-    <button (click)="changeTitle('Button clicked')">
+    <button (click)="changeTitle(inputElmentRef.value)">
       Save
     </button>
   `,
