@@ -9,7 +9,7 @@ import { TodoItem } from '../interfaces/todo-item';
     <app-input-button-unit (submit)="addItem($event)"></app-input-button-unit>
 
     <ul>
-      <li *ngFor="let todoItem of todoList">
+      <li *ngFor="let todoItem of todoList()">
         <app-todo-item [item]="todoItem"></app-todo-item>
       </li>
     </ul>
@@ -19,16 +19,17 @@ import { TodoItem } from '../interfaces/todo-item';
 })
 export class TodoListComponent implements OnInit {
 
-  todoList: TodoItem[];
-
   constructor(private todoListService: TodoListService) { }
 ​
   ngOnInit() {
-    this.todoList = this.todoListService.getTodoList();
+  }
+
+  todoList(): TodoItem[] {
+    return this.todoListService.getTodoList();
   }
 
   addItem(title: string) {
-    this.todoList.push({ title });
+    this.todoListService.addItem({ title });
   }
 
 }
